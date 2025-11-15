@@ -1,5 +1,6 @@
 ---
 import '../../styles/global.scss';
+import Footer from '../../components/footer/index.tsx';
 
 const { title = "Без названия" } = Astro.props;
 ---
@@ -11,6 +12,17 @@ const { title = "Без названия" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
+      main {
+        flex: 1;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -24,8 +36,6 @@ const { title = "Без названия" } = Astro.props;
       <slot />
     </main>
 
-    <footer>
-      © {new Date().getFullYear()} Мой сайт
-    </footer>
+    <Footer client:load />
   </body>
 </html>

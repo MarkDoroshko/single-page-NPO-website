@@ -1,0 +1,36 @@
+.footer {
+  background: #f8f9fa;
+  border-top: 2px solid #0066b3;
+  padding: 1rem 0;
+  margin-top: auto;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.logo {
+  font-weight: bold;
+  color: #0066b3; /* Цвет Росатома */
+  font-size: 1.2rem;
+}
+
+.disclaimer {
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.copyright {
+  color: #333;
+  font-size: 14px;
+}

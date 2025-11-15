@@ -10,7 +10,7 @@ pip install -r requirements.txt
 ```bash
 python create_db.py
 ```
-### ИЛИ Сбросить БД (очистить и создать заново):
+### ИЛИ Сбрось БД (очистить и создать заново):
 ```bash
 python reset_db.py 
 ```

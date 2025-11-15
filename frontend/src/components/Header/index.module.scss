@@ -1,7 +1,9 @@
+@use '../../styles/settings';
+
 .header {
-  background: linear-gradient(135deg, #003366 0%, #002244 100%);
-  color: white;
-  box-shadow: 0 4px 20px rgba(0, 51, 102, 0.15);
+  background: settings.$backgroundHeader;
+  color: settings.$white;
+  box-shadow: settings.$defaultBoxShadow;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -39,7 +41,7 @@
           .logoText {
             font-size: 18px;
             font-weight: 700;
-            color: white;
+            color: settings.$white;
           }
         }
 
@@ -53,7 +55,7 @@
           font-size: 20px;
           font-weight: 600;
           margin: 0;
-          color: white;
+          color: settings.$white;
         }
       }
 
@@ -76,7 +78,7 @@
 
           &:hover {
             background: rgba(255, 255, 255, 0.1);
-            color: white;
+            color: settings.$white;
             transform: translateY(-1px);
             text-decoration: none;
           }
@@ -88,8 +90,8 @@
         align-items: center;
 
         .loginBtn {
-          background: #00A651;
-          color: white;
+          background: settings.$green;
+          color: settings.$white;
           border: none;
           padding: 12px 24px;
           border-radius: 8px;
@@ -99,7 +101,7 @@
           transition: all 0.3s ease;
 
           &:hover {
-            background: #008F45;
+            background: settings.$greenDark;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 166, 81, 0.3);
           }
@@ -110,7 +112,7 @@
         display: none;
         background: none;
         border: none;
-        color: white;
+        color: settings.$white;
         font-size: 24px;
         cursor: pointer;
         padding: 5px;
@@ -127,7 +129,7 @@
       .mobileNavLink {
         background: none;
         border: none;
-        color: white;
+        color: settings.$white;
         font-size: 16px;
         padding: 12px 0;
         text-align: left;
@@ -143,8 +145,8 @@
       }
 
       .mobileLoginBtn {
-        background: #00A651;
-        color: white;
+        background: settings.$green;
+        color: settings.$white;
         border: none;
         padding: 12px;
         border-radius: 6px;

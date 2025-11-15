@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/RootLayout/index.astro';
+import Counter from '../components/Counter/index.tsx';
+---
+
+<BaseLayout title="Счётчик">
+  <h1>Мой первый Astro + React</h1>
+  <Counter initial={5} client:load />
+</BaseLayout>

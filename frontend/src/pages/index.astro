@@ -1,9 +1,16 @@
 ---
-import BaseLayout from '../layouts/RootLayout/index.astro';
-import Counter from '../components/Counter/index.tsx';
+import Layout from '../layouts/Layout/index.astro';
+import Header from '../components/Header';
+import About from '../components/About';
+import Contacts from '../components/Contacts';
+import MapSection from '../components/MapSection';
+import Organizations from '../components/Organizations';
 ---
 
-<BaseLayout title="Счётчик">
-  <h1>Мой первый Astro + React</h1>
-  <Counter initial={5} client:load />
-</BaseLayout>
+<Layout title="Счётчик">
+  <Header />
+  <MapSection />
+  <Organizations />
+  <About />
+  <Contacts />
+</Layout>

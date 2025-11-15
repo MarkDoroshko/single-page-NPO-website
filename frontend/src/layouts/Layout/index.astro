@@ -13,19 +13,8 @@ const { title = "Без названия" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="/">Главная</a> |
-        <a href="/about">О проекте</a>
-      </nav>
-    </header>
-
     <main>
       <slot />
     </main>
-
-    <footer>
-      © {new Date().getFullYear()} Мой сайт
-    </footer>
   </body>
 </html>

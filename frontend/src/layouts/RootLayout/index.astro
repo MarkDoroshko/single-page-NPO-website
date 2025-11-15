@@ -1,0 +1,31 @@
+---
+import '../../styles/global.scss';
+
+const { title = "Без названия" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Главная</a> |
+        <a href="/about">О проекте</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      © {new Date().getFullYear()} Мой сайт
+    </footer>
+  </body>
+</html>

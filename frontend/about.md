@@ -1,7 +1,7 @@
 # Frontend
 
 ## Стек технологий
-`pnpm`, `Astro + Islands Architecture`, `React`, `Prettier`, 
+`pnpm`, `Astro + Islands Architecture`, `React`, `Prettier`, `sass`
 
 ## Основные команды
 - `pnpm create astro@latest` - скачивает и запускает скрипт создания нового проекта Astro

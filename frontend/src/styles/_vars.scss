@@ -1,10 +1,15 @@
 $white: #fff;
 $green: #00A651;
 $greenDark: #008F45;
+$blueDark: #003274;
+$blue: #025EA1;
+$blueLight: #6CACE4;
 
 $defaultBackground: #f8f9fa;
 
 $defaultFontFamily: 'RosatomWebBold', sans-serif;
 $boundedFontFamily: 'RosatomWebLight', sans-serif;
 $defaultBoxShadow: 0 4px 20px rgba(0, 51, 102, 0.15);
-$backgroundHeader: linear-gradient(135deg, #003366 0%, #002244 100%)
+$backgroundHeader: linear-gradient(135deg, $blue 0%, $blueDark 100%);
+$defaultTitleColor: $blueDark;
+$defaultTextColor: #666;

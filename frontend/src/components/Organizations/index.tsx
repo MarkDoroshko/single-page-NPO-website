@@ -7,15 +7,24 @@ interface NKO {
   name: string
   category: string
   description: string
-  volunteer_work: string
+  target_audience: string
+  plan_description: string
   city_name: string
   status: string
 }
+
+// Функция для обрезки текста
+const truncateDescription = (text: string, wordLimit: number = 25) => {
+  const words = text.split(' ');
+  if (words.length <= wordLimit) return text;
+  return words.slice(0, wordLimit).join(' ') + '...';
+};
 
 const Organizations = () => {
   const [organizations, setOrganizations] = useState<NKO[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [selectedOrg, setSelectedOrg] = useState<NKO | null>(null)
 
   // Загружаем данные из нашего API
   useEffect(() => {
@@ -37,6 +46,22 @@ const Organizations = () => {
 
     fetchOrganizations()
   }, [])
+
+  // Обработчик для кнопки "Подробнее"
+  const handleDetailsClick = (org: NKO) => {
+    console.log('Клик по кнопке Подробнее:', org.name)
+    setSelectedOrg(org)
+  }
+
+  // Обработчик для кнопки "Стать волонтёром"
+  const handleVolunteerClick = (org: NKO) => {
+    alert(`Чтобы стать волонтёром в ${org.name}, свяжитесь с организацией по контактам из раздела "Подробнее"`)
+  }
+
+  // Закрыть модальное окно
+  const closeModal = () => {
+    setSelectedOrg(null)
+  }
 
   if (loading) {
     return (
@@ -87,19 +112,54 @@ const Organizations = () => {
 
               <div className={styles.category}>{org.category}</div>
 
-              <p className={styles.description}>{org.description}</p>
-
-              <div className={styles.volunteerWork}>
-                <strong>Волонтёрство:</strong> {org.volunteer_work || 'Помощь в организации мероприятий'}
-              </div>
+              <p className={styles.description}>{truncateDescription(org.description)}</p>
 
               <div className={styles.cardActions}>
-                <button className={styles.primaryBtn}>Подробнее</button>
-                <button className={styles.secondaryBtn}>Стать волонтёром</button>
+                <button
+                  className={styles.primaryBtn}
+                  onClick={() => handleDetailsClick(org)}
+                >
+                  Подробнее
+                </button>
+                <button
+                  className={styles.secondaryBtn}
+                  onClick={() => handleVolunteerClick(org)}
+                >
+                  Стать волонтёром
+                </button>
+
               </div>
             </div>
           ))}
         </div>
+
+        {/* Модальное окно */}
+        {selectedOrg && (
+          <div className={styles.modalOverlay} onClick={closeModal}>
+            <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+              <button className={styles.closeButton} onClick={closeModal}>×</button>
+
+                  <h2>{selectedOrg.name}</h2>
+                  <p>Город: {selectedOrg.city_name}</p>
+                  <p>Категория: {selectedOrg.category}</p>
+                  <p>Описание: {selectedOrg.description}</p>
+                  <p>Целевая аудитория: {selectedOrg.target_audience}</p>
+                  <p style={{whiteSpace: 'pre-line'}}>План мероприятий на год: {selectedOrg.plan_description}</p>
+                  {selectedOrg.social_links && (
+                      <p>
+                        Ссылка:{" "}
+                        <a href={selectedOrg.social_links} target="_blank" rel="noopener noreferrer"
+                           style={{color: '#00A651', textDecoration: 'underline'}}>
+                          {selectedOrg.social_links}
+                        </a>
+                      </p>
+                    )}
+              <button className={styles.primaryBtn} onClick={closeModal}>
+                Закрыть
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className={styles.cta}>
           <button className={styles.ctaBtn}>Показать все организации</button>

@@ -12,35 +12,66 @@ const MapSection = () => {
   const mapInstance = useRef<any>(null)
 
   useEffect(() => {
-    // Функция инициализации карты
-    const initMap = () => {
-      if (mapRef.current && window.ymaps) {
-        window.ymaps.ready(() => {
-          mapInstance.current = new window.ymaps.Map(mapRef.current, {
-            center: [55.76, 37.64],
-            zoom: 10,
-            controls: ['zoomControl', 'fullscreenControl'],
-          })
+  const initMap = async () => {  // Делаем функцию async
+    if (mapRef.current && window.ymaps) {
+      window.ymaps.ready(async () => {  // Добавляем async здесь
+        mapInstance.current = new window.ymaps.Map(mapRef.current, {
+          center: [55.76, 37.64],
+          zoom: 4,  // Увеличиваем zoom чтобы видеть всю Россию
+          controls: ['zoomControl', 'fullscreenControl'],
+        })
 
-          // Добавляем несколько меток для примера
-          const markers = [
-            { coords: [55.76, 37.64], title: 'Москва' },
-            { coords: [59.94, 30.31], title: 'Санкт-Петербург' },
-            { coords: [56.33, 44.0], title: 'Нижний Новгород' },
-            { coords: [56.84, 60.61], title: 'Екатеринбург' },
-          ]
+        // ЗАГРУЖАЕМ РЕАЛЬНЫЕ НКО ИЗ НАШЕГО API
+        try {
+          const response = await fetch('http://localhost:8000/nko')
+          const data = await response.json()
 
-          markers.forEach((marker) => {
+          // Функция для получения координат городов
+          const getCityCoords = (city: string): [number, number] => {
+            const coords: {[key: string]: [number, number]} = {
+              'Ангарск': [52.28, 104.28],
+              'Зеленогорск': [56.11, 94.59],
+              'Снежинск': [56.08, 60.73],
+              'Москва': [55.76, 37.64],
+              'Санкт-Петербург': [59.94, 30.31],
+              'Нижний Новгород': [56.33, 44.0],
+              'Екатеринбург': [56.84, 60.61],
+              // Добавь остальные города при необходимости
+            }
+            return coords[city] || [55.76, 37.64] // По умолчанию Москва
+          }
+
+          // Добавляем метки для каждой НКО из нашей БД
+          data.nko.forEach((nko: any) => {
+            const coords = getCityCoords(nko.city_name)
             const placemark = new window.ymaps.Placemark(
-              marker.coords,
-              { balloonContent: marker.title },
+              coords,
+              {
+                balloonContent: `
+                  <strong>${nko.name}</strong><br/>
+                  <em>${nko.category}</em><br/>
+                  ${nko.description}<br/>
+                  <b>Город:</b> ${nko.city_name}
+                `
+              },
               { preset: 'islands#icon', iconColor: '#0095b6' }
             )
             mapInstance.current.geoObjects.add(placemark)
           })
-        })
-      }
+
+          // ОБНОВЛЯЕМ СТАТИСТИКУ реальными цифрами
+          const statsElement = document.querySelector(`.${styles.statNumber}`)
+          if (statsElement) {
+            // Можно обновить цифры на реальные
+            console.log(`Загружено ${data.nko.length} организаций`)
+          }
+
+        } catch (error) {
+          console.error('Ошибка загрузки НКО для карты:', error)
+        }
+      })
     }
+  }
 
     // Загружаем API Яндекс.Карт
     if (!window.ymaps) {

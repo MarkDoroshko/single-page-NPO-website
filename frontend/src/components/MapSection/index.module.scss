@@ -37,14 +37,57 @@
 }
 
 .mapContainer {
+  position: relative;
   margin: 40px 0;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 51, 102, 0.1);
+  display: flex;
+}
+
+.filtersPanel {
+  width: 250px;
+  background: white;
+  padding: 20px;
+  border-right: 1px solid #f0f0f0;
+}
+
+.filtersPanel h3 {
+  margin: 0 0 15px 0;
+  color: #003366;
+  font-size: 16px;
+}
+
+.categoryFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterBtn {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s ease;
+  font-size: 14px;
+
+  &:hover {
+    background: #e9ecef;
+  }
+}
+
+.filterBtnActive {
+  background: #003366;
+  color: white;
+  border-color: #003366;
 }
 
 .yandexMap {
-  border-radius: 12px;
+  flex: 1;
+  border-radius: 0 12px 12px 0;
 }
 
 .mapStats {
@@ -90,16 +133,191 @@
   }
 }
 
+// Стили для модального окна
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.modal {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  &:hover {
+    background: #f0f0f0;
+    color: #333;
+  }
+}
+
+.primaryBtn {
+  background: #003366;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #002244;
+    transform: translateY(-1px);
+  }
+}
+
 @media (max-width: 768px) {
   .mapStats {
     gap: 30px;
   }
-  
+
   .statNumber {
     font-size: 28px;
   }
-  
+
   .mapTitle {
     font-size: 28px;
+  }
+
+  .mapContainer {
+    flex-direction: column;
+  }
+
+  .filtersPanel {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .categoryFilters {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.searchBox {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #003366;
+    box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.1);
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.clearSearch {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: #666;
+  }
+}
+
+.categorySection {
+  margin-bottom: 20px;
+}
+
+.categorySection h4 {
+  margin: 0 0 12px 0;
+  color: #003366;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.helpText {
+  background: rgba(0, 166, 81, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #00A651;
+  line-height: 1.4;
+}
+
+.citySection {
+  margin-bottom: 20px;
+}
+
+.citySection h4 {
+  margin: 0 0 8px 0;
+  color: #003366;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.citySelect {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: #003366;
   }
 }

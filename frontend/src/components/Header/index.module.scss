@@ -1,0 +1,193 @@
+@use '../../styles/settings';
+
+.header {
+  background: settings.$backgroundHeader;
+  color: settings.$white;
+  box-shadow: settings.$defaultBoxShadow;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    .headerContent {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+      position: relative;
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .logoIcon {
+            font-size: 28px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+          }
+
+          .logoText {
+            font-size: 18px;
+            font-weight: 700;
+            color: settings.$white;
+          }
+        }
+
+        .divider {
+          width: 1px;
+          height: 30px;
+          background: rgba(255, 255, 255, 0.3);
+        }
+
+        .title {
+          font-family: settings.$defaultFontFamily;
+          font-size: 20px;
+          font-weight: 600;
+          margin: 0;
+          color: settings.$white;
+        }
+      }
+
+      .nav {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+
+        .navLink {
+          font-family: settings.$boundedFontFamily;
+          background: none;
+          border: none;
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 16px;
+          cursor: pointer;
+          padding: 8px 16px;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          display: inline-block;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: settings.$white;
+            transform: translateY(-1px);
+            text-decoration: none;
+          }
+        }
+      }
+
+      .authSection {
+        display: flex;
+        align-items: center;
+
+        .loginBtn {
+          font-family: settings.$boundedFontFamily;
+          background: settings.$green;
+          color: settings.$white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: settings.$greenDark;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 166, 81, 0.3);
+          }
+        }
+      }
+
+      .burger {
+        display: none;
+        background: none;
+        border: none;
+        color: settings.$white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 5px;
+      }
+    }
+
+    .mobileMenu {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+      .mobileNavLink {
+        background: none;
+        border: none;
+        color: settings.$white;
+        font-size: 16px;
+        padding: 12px 0;
+        text-align: left;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-decoration: none;
+        display: block;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.05);
+          text-decoration: none;
+        }
+      }
+
+      .mobileLoginBtn {
+        background: settings.$green;
+        color: settings.$white;
+        border: none;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 910px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .nav,
+  .authSection {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .mobileMenu {
+    display: flex;
+  }
+
+  .brand {
+    gap: 15px;
+  }
+
+  .logoText {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+}

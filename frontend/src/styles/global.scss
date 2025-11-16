@@ -1,6 +1,23 @@
-$body-bg: #f8f9fa;
+@use './settings';
+@use './fonts';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
 
 body {
-  background: $body-bg;
-  font-family: system-ui;
+  margin: 0;
+  padding: 0;
+  background: settings.$defaultBackground;
+  font-family: settings.$defaultFontFamily, settings.$boundedFontFamily, sans-serif;
 }

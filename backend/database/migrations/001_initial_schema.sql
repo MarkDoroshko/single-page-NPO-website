@@ -30,7 +30,8 @@ CREATE TABLE nko_organizations (
         'Другое'
     )),
     description TEXT,
-    volunteer_work TEXT,
+    target_audience TEXT,
+    plan_description TEXT,
     phone TEXT,
     address TEXT,
     city_id INTEGER NOT NULL,

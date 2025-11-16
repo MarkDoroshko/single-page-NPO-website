@@ -9,7 +9,8 @@ app = FastAPI(title="NKO Map API")
 # Разрешаем запросы с фронтенда
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:4321", "http://127.0.0.1:4321"],  # Явно указываем фронтенд
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -84,7 +85,8 @@ class NKOCreate(BaseModel):
     name: str
     category: str
     description: str
-    volunteer_work: str = ""
+    target_audience: str = ""
+    plan_description: str = ""
     phone: str = ""
     address: str = ""
     city_id: int
@@ -107,11 +109,11 @@ def create_nko(nko_data: NKOCreate):
         # Добавляем новую НКО (статус 'pending' - на модерации)
         cursor.execute("""
             INSERT INTO nko_organizations 
-            (name, category, description, volunteer_work, phone, address, city_id, website_url, social_links, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
+            (name, category, description, target_audience, plan_description, phone, address, city_id, website_url, social_links, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
         """, (
             nko_data.name, nko_data.category, nko_data.description,
-            nko_data.volunteer_work, nko_data.phone, nko_data.address,
+            nko_data.target_audience, nko_data.plan_description, nko_data.phone, nko_data.address,
             nko_data.city_id, nko_data.website_url, nko_data.social_links
         ))
 
@@ -135,7 +137,8 @@ class NKOUpdate(BaseModel):
     name: str = None
     category: str = None
     description: str = None
-    volunteer_work: str = None
+    target_audience: str = None
+    plan_description: str = None
     phone: str = None
     address: str = None
     website_url: str = None
@@ -166,9 +169,12 @@ def update_nko(nko_id: int, nko_data: NKOUpdate):
         if nko_data.description is not None:
             update_fields.append("description = ?")
             update_values.append(nko_data.description)
-        if nko_data.volunteer_work is not None:
-            update_fields.append("volunteer_work = ?")
-            update_values.append(nko_data.volunteer_work)
+        if nko_data.target_audience is not None:
+            update_fields.append("target_audience = ?")
+            update_values.append(nko_data.target_audience)
+        if nko_data.plan_description is not None:
+            update_fields.append("plan_description = ?")
+            update_values.append(nko_data.plan_description)
         if nko_data.phone is not None:
             update_fields.append("phone = ?")
             update_values.append(nko_data.phone)

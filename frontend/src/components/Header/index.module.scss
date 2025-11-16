@@ -30,12 +30,10 @@
           align-items: center;
           gap: 10px;
 
-          .logoIcon {
-            font-size: 28px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
+          .logoImage {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
           }
 
           .logoText {

@@ -1,7 +1,6 @@
 .mapSection {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  padding: 60px 0;
+  background: #f8f9fa;
 }
 
 .container {
@@ -10,46 +9,49 @@
   padding: 0 20px;
 }
 
-.mapPlaceholder {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 60px 40px;
+.mapContent {
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.mapContent {
-  max-width: 600px;
-  margin: 0 auto;
+.mapHeader {
+  margin-bottom: 40px;
 }
 
 .mapIcon {
-  font-size: 80px;
+  font-size: 64px;
   margin-bottom: 20px;
 }
 
 .mapTitle {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 700;
   margin-bottom: 16px;
-  background: linear-gradient(45deg, #fff, #e0f7fa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #003366;
 }
 
 .mapDescription {
   font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 40px;
-  opacity: 0.9;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mapContainer {
+  margin: 40px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 51, 102, 0.1);
+}
+
+.yandexMap {
+  border-radius: 12px;
 }
 
 .mapStats {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-bottom: 40px;
+  gap: 60px;
+  margin: 40px 0;
 }
 
 .stat {
@@ -62,50 +64,42 @@
   font-size: 36px;
   font-weight: 700;
   color: #00A651;
+  margin-bottom: 8px;
 }
 
 .statLabel {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-top: 5px;
+  font-size: 16px;
+  color: #666;
 }
 
 .exploreBtn {
-  background: #00A651;
+  background: #003366;
   color: white;
   border: none;
   padding: 16px 32px;
-  border-radius: 50px;
+  border-radius: 8px;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    background: #008F45;
+    background: #002244;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 166, 81, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
   }
 }
 
 @media (max-width: 768px) {
-  .mapSection {
-    padding: 60px 0;
-  }
-
-  .mapPlaceholder {
-    padding: 40px 20px;
-  }
-
-  .mapTitle {
-    font-size: 36px;
-  }
-
   .mapStats {
-    gap: 20px;
+    gap: 30px;
   }
-
+  
   .statNumber {
+    font-size: 28px;
+  }
+  
+  .mapTitle {
     font-size: 28px;
   }
 }

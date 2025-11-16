@@ -1,7 +1,7 @@
 ---
-import '../../styles/global.scss';
+import '../../styles/global.scss'
 
-const { title = "Без названия" } = Astro.props;
+const { title = 'Без названия' } = Astro.props
 ---
 
 <!doctype html>
@@ -11,6 +11,13 @@ const { title = "Без названия" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- Яндекс.Карты -->
+    <script
+      is:inline
+      src="https://api-maps.yandex.ru/2.1/?apikey=f5521c4a-ab4c-4838-80ed-ab93cb789abf&lang=ru_RU"
+      type="text/javascript"
+    ></script>
   </head>
   <body>
     <main>

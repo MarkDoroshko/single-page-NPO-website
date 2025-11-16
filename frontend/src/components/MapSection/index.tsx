@@ -45,7 +45,7 @@ const MapSection = () => {
     // Загружаем API Яндекс.Карт
     if (!window.ymaps) {
       const script = document.createElement('script')
-      script.src = 'https://api-maps.yandex.ru/2.1/?apikey=f5521c4a-ab4c-4838-80ed-ab93cb789abf&lang=ru_RU'
+      script.src = 'https://api-maps.yandex.ru/2.1/?apikey=aec83077-0ab1-49bd-a54b-93b31de15c9c&lang=ru_RU'
       script.async = true
       script.onload = initMap
       document.head.appendChild(script)

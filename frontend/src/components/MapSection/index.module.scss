@@ -1,6 +1,8 @@
+@use '../../styles/settings';
+
 .mapSection {
   padding: 60px 0;
-  background: #f8f9fa;
+  background: settings.$defaultBackground;
 }
 
 .container {
@@ -26,12 +28,12 @@
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 16px;
-  color: #003366;
+  color: settings.$defaultTitleColor;
 }
 
 .mapDescription {
   font-size: 18px;
-  color: #666;
+  color: settings.$defaultTextColor;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -116,7 +118,7 @@
 }
 
 .exploreBtn {
-  background: #003366;
+  background: settings.$blue;
   color: white;
   border: none;
   padding: 16px 32px;
@@ -127,7 +129,7 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background: #002244;
+    background: settings.$blueDark;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
   }

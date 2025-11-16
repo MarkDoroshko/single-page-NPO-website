@@ -10,8 +10,11 @@ const Header = () => {
         <div className={styles.headerContent}>
           <div className={styles.brand}>
             <div className={styles.logo}>
-              <div className={styles.logoIcon}>⚛</div>
-              <span className={styles.logoText}>Росатом</span>
+              <img 
+                src="/logo.png" 
+                alt="Росатом" 
+                className={styles.logoImage}
+              />
             </div>
             <div className={styles.divider}></div>
             <h1 className={styles.title}>Карта добрых дел</h1>

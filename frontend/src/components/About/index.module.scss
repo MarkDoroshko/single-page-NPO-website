@@ -79,7 +79,7 @@
           width: 100%;
           max-width: 400px;
           height: 400px;
-          background: linear-gradient(135deg, #003366 0%, #00A651 100%);
+          background: settings.$backgroundHeader;
           border-radius: 20px;
           display: flex;
           align-items: center;
